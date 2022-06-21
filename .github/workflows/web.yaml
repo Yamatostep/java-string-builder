@@ -14,3 +14,5 @@ jobs:
       - uses: bluefireteam/flutter-gh-pages@v7
         with:
           workingDir: examples/gh-pages
+          webRenderer: canvaskit
+          targetBranch: my-gh-pages-branch

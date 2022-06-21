@@ -13,4 +13,7 @@ jobs:
       - uses: subosito/flutter-action@v1
       - uses: bluefireteam/flutter-gh-pages@v7
         with:
+          workingDir: web
+      - uses: bluefireteam/flutter-gh-pages@v7
+        with:
           baseHref: /java-string-builder/

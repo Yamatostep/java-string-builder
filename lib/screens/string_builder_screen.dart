@@ -43,7 +43,7 @@ class _StringBuilderScreenState extends State<StringBuilderScreen> {
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     border: OutlineInputBorder(),
                     icon: Icon(Icons.text_fields),
-                    hintText: 'Enter text',
+                    hintText: 'Enter sql text...',
                     labelText: 'SQL String',
                   ),
                   onChanged: _onInputChange,

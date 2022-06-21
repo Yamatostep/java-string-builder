@@ -13,6 +13,4 @@ jobs:
       - uses: subosito/flutter-action@v1
       - uses: bluefireteam/flutter-gh-pages@v7
         with:
-          workingDir: examples/gh-pages
-          webRenderer: canvaskit
-          targetBranch: my-gh-pages-branch
+          baseHref: /java-string-builder/

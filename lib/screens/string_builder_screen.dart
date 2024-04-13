@@ -11,16 +11,18 @@ class StringBuilderScreen extends StatefulWidget {
 }
 
 class _StringBuilderScreenState extends State<StringBuilderScreen> {
-  String _result = '';
+  String _originalText = '';
   final Key _form = GlobalKey();
 
   void _onInputChange(String text) {
-    String temp = text;
+    _originalText = text;
+  }
+
+  String _getResult() {
+    String temp = _originalText;
     temp = temp.replaceAll(RegExp(r' \n'), '\n');
     temp = temp.replaceAll(RegExp(r'\n'), ' ");\nsql.append("');
-    setState(() {
-      _result = "sql.append(\"$temp\");";
-    });
+    return "sql.append(\"$temp\");";
   }
 
   @override
@@ -55,16 +57,17 @@ class _StringBuilderScreenState extends State<StringBuilderScreen> {
               SizedBox(
                 width: double.infinity,
                 height: 50,
-                child: TextButton(
+                child: ElevatedButton.icon(
                   style: TextButton.styleFrom(
                     primary: Colors.white,
                     backgroundColor: Colors.blue,
                     elevation: 2,
                   ),
                   onPressed: () {
-                    Clipboard.setData(ClipboardData(text: _result));
+                    Clipboard.setData(ClipboardData(text: _getResult()));
                   },
-                  child: const Text('Copy to clipboard'),
+                  icon: const Icon(Icons.copy),
+                  label: const Text('Copy to clipboard'),
                 ),
               ),
             ],

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class StringBuilderScreen extends StatefulWidget {
-  const StringBuilderScreen({super.key, required this.title});
+class StringBuilderToStringScreen extends StatefulWidget {
+  const StringBuilderToStringScreen({super.key, required this.title});
 
   final String title;
 
   @override
-  State<StringBuilderScreen> createState() => _StringBuilderScreenState();
+  State<StringBuilderToStringScreen> createState() => _StringBuilderToStringScreenState();
 }
 
-class _StringBuilderScreenState extends State<StringBuilderScreen> {
+class _StringBuilderToStringScreenState extends State<StringBuilderToStringScreen> {
   String _originalText = '';
   final Key _form = GlobalKey();
 
@@ -20,9 +20,10 @@ class _StringBuilderScreenState extends State<StringBuilderScreen> {
 
   String _getResult() {
     String temp = _originalText;
-    temp = temp.replaceAll(RegExp(r' \n'), '\n');
-    temp = temp.replaceAll(RegExp(r'\n'), ' ");\nsql.append("');
-    return "sql.append(\"$temp\" );";
+    temp = temp.replaceAll(RegExp(r'sql.append\("'), '');
+    temp = temp.replaceAll(RegExp(r' "\);'), '');
+    temp = temp.replaceAll(RegExp(r'"\);'), '');
+    return temp;
   }
 
   @override
@@ -54,8 +55,8 @@ class _StringBuilderScreenState extends State<StringBuilderScreen> {
                         fillColor: Theme.of(context).colorScheme.secondary,
                         border: const OutlineInputBorder(),
                         icon: const Icon(Icons.text_fields),
-                        hintText: 'Enter sql text...',
-                        labelText: 'SQL String',
+                        hintText: 'Enter string builder text...',
+                        labelText: 'String builder',
                       ),
                       onChanged: _onInputChange,
                     ),

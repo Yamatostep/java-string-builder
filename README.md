@@ -17,6 +17,6 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Deploying to GitHub pages
 
-flutter clean
-flutter pub get
-flutter build web --base-href /java-string-builder/ --release --output docs
+1. flutter clean
+2. flutter pub get
+3. flutter build web --base-href /java-string-builder/ --release --output docs

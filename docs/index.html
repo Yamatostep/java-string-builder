@@ -29,30 +29,36 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>java_string_builder</title>
+  <title>JavaStringBuilder</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80vh;
+    }
 
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "577289952";
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
+    .indicator {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
 </head>
 <body>
+  <div id="loading_indicator" class="container">
+    <img src="./asset/loading.gif" alt="Loading..." class="indicator" />
+  </div>
+  <script src="flutter_bootstrap.js" async></script>
   <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
+    window.onload = function () {
+      setTimeout(function() {
+        const loadingIndicator = document.getElementById("loading_indicator");
+        if(loadingIndicator) {
+          loadingIndicator.remove();
         }
-      }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
-        return appRunner.runApp();
-      });
-    });
+      }, 10000);
+    };
   </script>
 </body>
 </html>

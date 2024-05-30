@@ -22,7 +22,7 @@ class _StringBuilderScreenState extends State<StringBuilderScreen> {
     String temp = _originalText;
     temp = temp.replaceAll(RegExp(r' \n'), '\n');
     temp = temp.replaceAll(RegExp(r'\n'), ' ");\nsql.append("');
-    return "sql.append(\"$temp\" );";
+    return "sql.append(\"$temp \");";
   }
 
   @override

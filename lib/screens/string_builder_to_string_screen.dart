@@ -19,11 +19,18 @@ class _StringBuilderToStringScreenState extends State<StringBuilderToStringScree
   }
 
   String _getResult() {
-    String temp = _originalText;
-    temp = temp.replaceAll(RegExp(r'sql.append\("'), '');
-    temp = temp.replaceAll(RegExp(r' "\);'), '');
-    temp = temp.replaceAll(RegExp(r'"\);'), '');
-    return temp;
+    String result = "";
+    List<String> temp = _originalText.split("\n");
+    for (var text in temp) {
+      if (result != "") {
+        result += "\n";
+      }
+      text = text.replaceAll(RegExp(r'^\s*'), '');
+      text = text.replaceAll(RegExp(r'sql.append\("'), '');
+      text = text.replaceAll(RegExp(r'\s*"\);'), '');
+      result += text;
+    }
+    return result;
   }
 
   @override
